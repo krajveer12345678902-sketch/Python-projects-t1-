@@ -1,4 +1,5 @@
-print("Welcome to my first game v1.2")
+import random 
+print("Welcome to my first game v1.3")
 name = input("what is your name? ")
 age = int(input("What is your age? "))
 if age >= 18:
@@ -7,13 +8,16 @@ if age >= 18:
     score = 0 # starts player's score at 0 !
     lives = 3 # player's start with three chances !'
     skip = 2 # player's only get two skip for whole game'
-    questions = ["Question 1 : What is the capital of Bihar? ", "Question 2 : How many states are there in India? ", "Question 3 : Which state of india is largest in terms of population? ", "Question 4: Which organelle is known as the powerhouse of the cell? ","Question 5: Which river is known as the 'Sorrow of Bihar? ","Question 6: What is the Sl unit of electric current? ","Question 7: Who was the first President of India? ","Question 8: Which vitamin is produced when human skin is exposed to sunlight? ","Question 9: What is the chemical formula of common table salt? ","Question 10: Which planet is known as the Red Planet? "]
+    questions = ["What is the capital of Bihar? ", " How many states are there in India? ", "Which state of india is largest in terms of population? ", "Which organelle is known as the powerhouse of the cell? "," Which river is known as the 'Sorrow of Bihar? ","What is the Sl unit of electric current? ","Who was the first President of India? "," Which vitamin is produced when human skin is exposed to sunlight? ","What is the chemical formula of common table salt? ","Which planet is known as the Red Planet? "]
     answers = [ ["patna"], ["28", "twenty eight" , "twenty eight"], ["up", "uttar pradesh"], ["mitochondria", "'mitochondrion"], ["kosi", "kosi river"],["ampere", "amp", "a"] , ["dr rajendra prasad", "rajendra prasad"], [ "vitamin d", "d"], ["nacl", "sodium chloride"],["mars"] ]
-    for i in range (len( questions)):
+    order = list (range(len(questions)))
+    random.shuffle(order)
+    q_num = 1
+    for i in order :
         if lives == 0 :
             break
         while True :
-            ans = input(questions[i]). lower( ). strip( )
+            ans = input (f" Question {q_num} : {questions [i]}"). lower( ). strip( )
             if ans == "skip":
                 if skip > 0:
                     skip = skip - 1
@@ -32,6 +36,7 @@ if age >= 18:
                      break
                  else: 
                     print (" Wrong! Lives left: ", lives) 
+        q_num = q_num + 1
     print( " Game Over, ", name, "! your final score is", score)                
 else:
     print ("ohh! sorry, your age needs to be 18 or higher to continue")
